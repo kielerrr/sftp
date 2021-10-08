@@ -1,5 +1,4 @@
 FROM debian:buster
-MAINTAINER Adrian Dvergsdal [atmoz.net]
 
 # Steps done in one RUN layer:
 # - Install packages
@@ -7,6 +6,7 @@ MAINTAINER Adrian Dvergsdal [atmoz.net]
 # - Remove generic host keys, entrypoint generates unique keys
 RUN apt-get update && \
     apt-get -y install openssh-server && \
+    apt-get -y install nano && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/run/sshd && \
     rm -f /etc/ssh/ssh_host_*key*
